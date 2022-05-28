@@ -4,9 +4,13 @@
  * We recommend including the built version of this JavaScript file
  * (and its CSS file) in your base layout (base.html.twig).
  */
+require('vue')
 
 // any CSS you import will output into a single css file (app.css in this case)
 import './styles/app.css';
 
+
 // start the Stimulus application
 import './bootstrap';
+import './js/vue.js';
+

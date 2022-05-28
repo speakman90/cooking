@@ -14,5 +14,11 @@
         "dev": "encore dev",
         "watch": "encore dev --watch",
         "build": "encore production --progress"
+    },
+    "dependencies": {
+        "v": "^0.3.0",
+        "vue": "2.5",
+        "vue-loader": "^15.9.5",
+        "vue-template-compiler": "^2.6.14"
     }
 }
