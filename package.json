@@ -16,6 +16,11 @@
         "build": "encore production --progress"
     },
     "dependencies": {
+        "@popperjs/core": "^2.11.5",
+        "bootstrap": "^5.2.0-beta1",
+        "jquery": "^3.6.0",
+        "sass": "^1.52.1",
+        "sass-loader": "^13.0.0",
         "v": "^0.3.0",
         "vue": "2.5",
         "vue-loader": "^15.9.5",
