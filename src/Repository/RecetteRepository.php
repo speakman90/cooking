@@ -43,6 +43,24 @@ class RecetteRepository extends ServiceEntityRepository
 //    /**
 //     * @return Recette[] Returns an array of Recette objects
 //     */
+
+    public function getPaginateRecettes($page, $limit) 
+    {
+        $query = $this->createQueryBuilder('a')
+            ->orderBy('a.title', 'ASC')
+            ->setFirstResult(($page * $limit) - $limit)
+            ->setMaxResults($limit)
+        ;
+        return $query->getQuery()->getResult();
+    }
+
+    public function getTotalRecettes()
+    {
+        $query = $this->createQueryBuilder('a')
+            ->select('COUNT(a.id)')
+        ;
+        return $query->getQuery()->getSingleScalarResult();
+    }
 //    public function findByExampleField($value): array
 //    {
 //        return $this->createQueryBuilder('r')
