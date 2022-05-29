@@ -5,9 +5,11 @@ namespace App\Controller;
 use App\Entity\Recette;
 use App\Repository\RecetteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Constraints\Json;
 
 #[Route('/recettes', name: 'recettes_')]
 class RecettesController extends AbstractController
@@ -19,11 +21,19 @@ class RecettesController extends AbstractController
 
         $page = (int)$request->query->get('page', 1);
 
-        $recettes = $recetteRepository->getPaginateRecettes($page, $limit);
+        $search = $request->request->get('search');
 
-        $total = $recetteRepository->getTotalRecettes();
+        if($request->query->get('ajax')){
+            return new JsonResponse([
+                'content' => $this->render('recettes/index.html.twig',compact('recettes', 'total', 'limit', 'page'))
+            ]);
+        }
 
-        return $this->render('recettes/index.html.twig',compact('recettes', 'total', 'limit', 'page'));
+        $recettes = $recetteRepository->getPaginateRecettes($page, $limit, $search);
+
+        $total = $recetteRepository->getTotalRecettes($search);
+
+        return $this->render('recettes/index.html.twig',compact('recettes', 'total', 'limit', 'page', 'search'));
     }
 
     #[Route('/{id}', name: 'details')]
