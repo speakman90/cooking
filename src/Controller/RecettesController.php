@@ -3,13 +3,15 @@
 namespace App\Controller;
 
 use App\Entity\Recette;
+use App\Form\RecetteType;
 use App\Repository\RecetteRepository;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Validator\Constraints\Json;
+
 
 #[Route('/recettes', name: 'recettes_')]
 class RecettesController extends AbstractController
@@ -34,6 +36,26 @@ class RecettesController extends AbstractController
         $total = $recetteRepository->getTotalRecettes($search);
 
         return $this->render('recettes/index.html.twig',compact('recettes', 'total', 'limit', 'page', 'search'));
+    }
+
+    #[Route('/add', name:'add')]
+    public function addRecettes(Request $request, ManagerRegistry $doctrine): Response
+    {
+        $recette = new Recette();
+        $form = $this->createForm(RecetteType::class, $recette);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $em = $doctrine->getManager();
+            $em->persist($recette);
+            $em->flush();
+
+            return $this->redirect('/');
+        }
+
+        return $this->render('recettes/add.html.twig', ['form'=>$form->createView()]);
     }
 
     #[Route('/{id}', name: 'details')]

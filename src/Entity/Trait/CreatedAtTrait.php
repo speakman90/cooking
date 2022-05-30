@@ -14,9 +14,10 @@ trait CreatedAtTrait
         return $this->created_at;
     }
 
-    public function setCreatedAt(): self
+    public function setCreatedAt($date): self
     {
-        $this->created_at = new \DatetimeImmutable();
+
+        $this->created_at = $date;
 
         return $this;
     }
