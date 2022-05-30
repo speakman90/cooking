@@ -8,6 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class RecetteType extends AbstractType
@@ -20,7 +21,7 @@ class RecetteType extends AbstractType
             ->add('slug')
             ->add('content', TextareaType::class)
             ->add('img', FileType::class)
-            ->add('created_at')
+            ->add('created_at', HiddenType::class)
             ->add('Valider', SubmitType::class)
         ;
     }

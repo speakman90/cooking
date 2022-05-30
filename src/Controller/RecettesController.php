@@ -6,6 +6,7 @@ use App\Entity\Recette;
 use App\Form\RecetteType;
 use App\Repository\RecetteRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,7 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class RecettesController extends AbstractController
 {
     #[Route('/', name: 'index')]
-    public function index(RecetteRepository $recetteRepository, Request $request): Response
+    public function index(RecetteRepository $recetteRepository, Request $request, ManagerRegistry $doctrine): Response
     {
         $limit = 5;
 
@@ -35,27 +36,34 @@ class RecettesController extends AbstractController
 
         $total = $recetteRepository->getTotalRecettes($search);
 
-        return $this->render('recettes/index.html.twig',compact('recettes', 'total', 'limit', 'page', 'search'));
-    }
-
-    #[Route('/add', name:'add')]
-    public function addRecettes(Request $request, ManagerRegistry $doctrine): Response
-    {
         $recette = new Recette();
         $form = $this->createForm(RecetteType::class, $recette);
 
         $form->handleRequest($request);
+        
 
-        if($form->isSubmitted() && $form->isValid())
-        {
+        if ($form->isSubmitted() && $form->isValid()) {
+
             $em = $doctrine->getManager();
             $em->persist($recette);
             $em->flush();
 
-            return $this->redirect('/');
         }
 
-        return $this->render('recettes/add.html.twig', ['form'=>$form->createView()]);
+        return $this->render('recettes/index.html.twig',['recettes'=>$recettes, 'total'=>$total, 'limit'=>$limit, 'page'=>$page, 'search'=>$search, 'form'=>$form->createView()]);
+    }
+
+    #[Route('/ajax/{id}', name: 'add')]
+    public function addRecette(string $id, string $title, string $content, string $img, EntityManagerInterface $em): Response
+    {
+        $recette = new Recette();
+        $recette->setId($id);
+        $recette->setTitle($title);
+        $recette->setContent($content);
+        $recette->setImg($img);
+        $em->persist($recette);
+        $em->flush();
+        return new JsonResponse(['recette'=>$recette]);
     }
 
     #[Route('/{id}', name: 'details')]
