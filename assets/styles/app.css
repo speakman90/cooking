@@ -1,3 +1,48 @@
-body {
-    background-color: lightgray;
+.btn-nav {
+    height: 100%;
+    padding: 5px;
+    text-align: center;
+    border-radius: 20%;
+}
+
+#btn-home{
+    background-color: rgba(255, 166, 0, 0.25);
+    color: #fa8234;
+}
+
+#btn-recette {
+    background-color: #36c5f975;
+    color: #36c4f9;
+}
+
+#btn-login {
+    background-color: #fbd7557e;
+    color: #fbd755;
+}
+
+#btn-register {
+    background-color: #61a9347a;
+    color: #61a934;
+}
+
+#footer {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.footer > ul {
+    display: flex;
+    justify-content: center;
 }
