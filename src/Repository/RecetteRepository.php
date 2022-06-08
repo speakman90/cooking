@@ -19,7 +19,7 @@ class RecetteRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Recette::class);
+        parent::__construct($registry, Recettes::class);
     }
 
     public function add(Recettes $entity, bool $flush = false): void

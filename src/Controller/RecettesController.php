@@ -11,10 +11,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Constraints\Json;
 
-#[Route('/recettes', name: 'recettes_')]
+#[Route('/recettes', name: 'app_recettes')]
 class RecettesController extends AbstractController
 {
-    #[Route('/', name: 'index')]
+    #[Route('', name: 'index')]
     public function index(RecetteRepository $recetteRepository, Request $request): Response
     {
         $limit = 5;
@@ -23,12 +23,6 @@ class RecettesController extends AbstractController
 
         $search = $request->request->get('search');
 
-        if($request->query->get('ajax')){
-            return new JsonResponse([
-                'content' => $this->render('recettes/index.html.twig',compact('recettes', 'total', 'limit', 'page'))
-            ]);
-        }
-
         $recettes = $recetteRepository->getPaginateRecettes($page, $limit, $search);
 
         $total = $recetteRepository->getTotalRecettes($search);
@@ -36,7 +30,7 @@ class RecettesController extends AbstractController
         return $this->render('recettes/index.html.twig',compact('recettes', 'total', 'limit', 'page', 'search'));
     }
 
-    #[Route('/{id}', name: 'details')]
+    #[Route('/{slug}', name: 'details')]
     public function details(Recettes $recette): Response
     {
         return $this->render('recettes/detail.html.twig', compact('recette'));

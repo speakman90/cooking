@@ -1,10 +1,10 @@
 <nav class="nav header">
     <ul>
         <li class="btn-nav" id="btn-home"><a href="/"><span class="material-symbols-outlined">food_bank</span>Accueil</a></li>
-        <li class="btn-nav" id="btn-recette"><a href="#"><span class="material-symbols-outlined">kitchen</span>Recettes</a></li>
+        <li class="btn-nav" id="btn-recette"><a href="/recettes"><span class="material-symbols-outlined">kitchen</span>Recettes</a></li>
     {% if app.user %}
-        <li class="btn-nav" id="btn-recette"><a href="#"><span class="material-symbols-outlined">kitchen</span>Le frigo</a></li>
-        <li class="btn-nav avatar"><a href="#"><image src='./Avatar/Avatar-base.png'></span>Déconnexion</a></li>
+        <li class="btn-nav" id="btn-login"><a href="/account"><span class="material-symbols-outlined">Countertops</span>cuisine</a></li>
+        <li class="btn-nav avatar"><a href="{{ path('app_logout') }}"><image src='{{app.user.avatar}}'></span>Déconnexion</a></li>
     {% else %}
         <li class="btn-nav" id="btn-login"><a href="/login"><span class="material-symbols-outlined">login</span>Connexion</a></li>
         <li class="btn-nav" id="btn-register"><a href="/register"><span class="material-symbols-outlined">breakfast_dining</span>Inscription</a></li>

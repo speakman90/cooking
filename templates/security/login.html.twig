@@ -15,7 +15,7 @@
                 <div class="mb-3">
                     Tu es connecter {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Déconnection</a>
                 </div>
-            {% endif %}
+            {% else %}
 
             <h1 class="mb-3">Pour posté des recettes ou donné ton avis, connecte toi</h1>
             <div class="input">
@@ -45,5 +45,7 @@
         </form>
     </div>
 </div>
+
+{% endif %}
 
 {% endblock %}
