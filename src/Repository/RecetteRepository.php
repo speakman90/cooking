@@ -7,14 +7,15 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Recettes>
+ * @extends ServiceEntityRepository<Recette>
  *
- * @method Recettes|null find($id, $lockMode = null, $lockVersion = null)
- * @method Recettes|null findOneBy(array $criteria, array $orderBy = null)
- * @method Recettes[]    findAll()
- * @method Recettes[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Recette|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Recette|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Recette[]    findAll()
+ * @method Recette[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ *
  */
-class RecettesRepository extends ServiceEntityRepository
+class RecetteRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
@@ -40,8 +41,35 @@ class RecettesRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return Recettes[] Returns an array of Recettes objects
+//     * @return Recette[] Returns an array of Recette objects
 //     */
+
+    public function getPaginateRecettes($page, $limit, $search) 
+    {
+        $query = $this->createQueryBuilder('a');
+        if ($search != null) {
+            $query->where('a.title = :title')
+            ->setParameter('title', $search);
+            ;
+        }
+        $query->orderBy('a.title', 'ASC')
+            ->setFirstResult(($page * $limit) - $limit)
+            ->setMaxResults($limit);
+        return $query->getQuery()->getResult();
+    }
+
+    public function getTotalRecettes($search)
+    {
+        $query = $this->createQueryBuilder('a')
+            ->select('COUNT(a.id)')
+        ;
+        if ($search != null) {
+            $query->where('a.title = :title')
+            ->setParameter('title', $search);
+            ;
+        }
+        return $query->getQuery()->getSingleScalarResult();
+    }
 //    public function findByExampleField($value): array
 //    {
 //        return $this->createQueryBuilder('r')
@@ -54,7 +82,7 @@ class RecettesRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Recettes
+//    public function findOneBySomeField($value): ?Recette
 //    {
 //        return $this->createQueryBuilder('r')
 //            ->andWhere('r.exampleField = :val')

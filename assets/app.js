@@ -7,12 +7,9 @@
 
 // any CSS you import will output into a single css file (app.css in this case)
 import './styles/app.css';
-<<<<<<< Updated upstream
-=======
 import './styles/index.less';
-import './styles/recette.less';
 import './styles/reset.css';
->>>>>>> Stashed changes
 
 // start the Stimulus application
 import './bootstrap';
+import './script.js';

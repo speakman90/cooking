@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Recettes;
-use App\Repository\RecettesRepository;
+use App\Repository\RecetteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,7 +15,7 @@ use Symfony\Component\Validator\Constraints\Json;
 class RecettesController extends AbstractController
 {
     #[Route('', name: 'index')]
-    public function index(RecettesRepository $recettesRepository, Request $request): Response
+    public function index(RecetteRepository $recetteRepository, Request $request): Response
     {
         $limit = 5;
 
@@ -23,9 +23,9 @@ class RecettesController extends AbstractController
 
         $search = $request->request->get('search');
 
-        $recettes = $recettesRepository->getPaginateRecettes($page, $limit, $search);
+        $recettes = $recetteRepository->getPaginateRecettes($page, $limit, $search);
 
-        $total = $recettesRepository->getTotalRecettes($search);
+        $total = $recetteRepository->getTotalRecettes($search);
 
         return $this->render('recettes/index.html.twig',compact('recettes', 'total', 'limit', 'page', 'search'));
     }
@@ -33,7 +33,6 @@ class RecettesController extends AbstractController
     #[Route('/{slug}', name: 'details')]
     public function details(Recettes $recette): Response
     {
-        dd($recette);
         return $this->render('recettes/detail.html.twig', compact('recette'));
     }
 }

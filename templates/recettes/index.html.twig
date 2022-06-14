@@ -1,25 +1,7 @@
-
 {% extends 'base.html.twig' %}
-
-{% block stylesheetsRecettes %}
-    {{ encore_entry_link_tags('recette') }}
-{% endblock %}
-
 
 {% block title %}Les recettes{% endblock %}
 
 {% block body %}
-    <h1>Les recettes du discord L42</h1>
-<div class="container">
-    {% for recette in recettes %}
-    <div class="rec-crd">
-        <img src="{{recette.image}}" alt="{{recette.title}}">
-        <article class="rec-cta">
-            <h3>{{recette.title}}</h3>
-            <a href="recettes/{{recette.slug}}">En savoir plus</a>
-        </article>
-    </div>        
-    {% endfor %}
-</div>
 
 {% endblock %}
