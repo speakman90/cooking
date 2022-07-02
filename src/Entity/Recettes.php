@@ -25,9 +25,11 @@ class Recettes
     #[ORM\Column(type: 'text')]
     private $content;
 
-    #[ORM\ManyToOne(targetEntity: Users::class, inversedBy: 'recettes')]
-    #[ORM\JoinColumn(nullable: false)]
-    private $users;
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'recettes')]
+    private $User;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $image;
 
     public function getId(): ?int
     {
@@ -82,14 +84,26 @@ class Recettes
         return $this;
     }
 
-    public function getUsers(): ?Users
+    public function getUser(): ?User
     {
-        return $this->users;
+        return $this->User;
     }
 
-    public function setUsers(?Users $users): self
+    public function setUser(?User $User): self
     {
-        $this->users = $users;
+        $this->User = $User;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }
