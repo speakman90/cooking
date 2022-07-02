@@ -7,6 +7,7 @@
 
 // any CSS you import will output into a single css file (app.css in this case)
 import './styles/app.less';
+import './styles/main.less';
 import './styles/reset.less';
 
 // start the Stimulus application

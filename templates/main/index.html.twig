@@ -4,37 +4,19 @@
 
 {% block body %}
 
-<header>
-    <nav>
-        <ul>
-            <li>
-                <a href="/">Accueil</a>
-            </li>
-            <li>
-                <a href="/recettes">Les recettes</a>
-            </li>
-            {% if is_granted('ROLE_ADMIN') %}
-            <li>
-                <a href="/admin">Admin</a>
-            </li>
-            {% endif %}
-            {% if app.user %}
-            <li>
-                <a href="">Le frigo</a>
-            </li>
-            <li>
-                <a href="/logout">Deconnexion</a>
-            </li>
-            {% else %}
-            <li>
-                <a href="/login">Connexion</a>
-            </li>
-            <li>
-                <a href="/register">Inscription</a>
-            </li>
-            {% endif %}
-        </ul>
-    </nav>
-</header>
+<div class="main-about">
+    <div class="main-container">
+        <h1>Bienvenue sur les recettes AMIGO 👨🏻‍🍳</h1>
+        <h2>Site créé par la Légion 42</h2>
+        <h3>N'hésitez pas à vous inscrire et à proposé vos recettes</h3>
+    </div>
+</div>
+
+<div class="main-rct-top">
+    <div class="main-rct-container">
+        <h2>La top recette du moment</h2>
+        ...
+    </div>
+</div>
 
 {% endblock %}

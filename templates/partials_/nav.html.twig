@@ -1,11 +1,11 @@
 <header>
-    <nav>
-        <ul>
+    <nav class='nav-navbar'>
+        <ul class='nav-list'>
             <li>
                 <a href="/">Accueil</a>
             </li>
             <li>
-                <a href="/recettes">Les recettes</a>
+                <a href="/recettes">Recettes</a>
             </li>
             {% if is_granted('ROLE_ADMIN') %}
             <li>
@@ -14,7 +14,7 @@
             {% endif %}
             {% if app.user %}
             <li>
-                <a href="">Le frigo</a>
+                <a href="">Frigo</a>
             </li>
             <li>
                 <a href="/logout">Deconnexion</a>
