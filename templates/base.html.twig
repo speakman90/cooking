@@ -9,6 +9,7 @@
         {% block stylesheets %}
             {{ encore_entry_link_tags('all') }}
             {{ encore_entry_link_tags('main') }}
+            {{ encore_entry_link_tags('other') }}
             {{ encore_entry_link_tags('reset') }}
         {% endblock %}
 
@@ -18,9 +19,7 @@
     </head>
     <body>
         {% include './partials_/nav.html.twig' %}
-        {% block body %}
-       
-        {% endblock %}
+        {% block body %}{% endblock %}
         {% include './partials_/footer.html.twig' %}
     </body>
 </html>

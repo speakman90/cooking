@@ -23,10 +23,48 @@ nav {
                         color: white;
                         background-color: #ee4d2a;
                         transition: all 0.3s ease-in-out;
+                        box-shadow: inset -1px 1px 1px black;
                     }
                 &:focus {
                     background-color: #ee4d2a;
                 }
+            }
+        }
+    }
+}
+
+footer {
+    background-color: #ee4d2a;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    nav {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        .fa-discord {
+           font-size: 2em;
+            color: white;
+            transition: all 0.3s ease-in-out;
+            &:hover {
+                    color: #7289da;
+                    transition: all 0.3s ease-in-out;
+                }
+        }
+        .nav-infos {
+            text-decoration: none;
+            color: white;
+            margin: 0.5em 0;
+            padding: 0.5em;
+            transition: all 0.3s ease-in-out;
+            &:hover {
+                    color: black;
+                    background-color: white;
+                    border-radius: 20px;
+                    transition: all 0.3s ease-in-out;
+                }
+            p {
+                margin: 0;
             }
         }
     }

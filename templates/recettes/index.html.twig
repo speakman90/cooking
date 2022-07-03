@@ -1,22 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Recettes index{% endblock %}
+{% block title %}Recettes{% endblock %}
 
 {% block body %}
-    <h1>Recettes index</h1>
+    <h1>Toutes les recettes</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Slug</th>
-                <th>Ingredient</th>
-                <th>Content</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
         {% for recette in recettes %}
             <tr>
                 <td>{{ recette.id }}</td>
@@ -24,6 +12,7 @@
                 <td>{{ recette.slug }}</td>
                 <td>{{ recette.ingredient }}</td>
                 <td>{{ recette.content }}</td>
+                <td><img src="{{ asset('image/'~recette.image) }}" alt=""></td>
                 <td>
                     <a href="{{ path('app_recettes_show', {'id': recette.id}) }}">show</a>
                     <a href="{{ path('app_recettes_edit', {'id': recette.id}) }}">edit</a>
@@ -31,11 +20,10 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">no records found</td>
+                <td colspan="6">Pas de recette</td>
             </tr>
         {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_recettes_new') }}">Create new</a>
+    {% if app.user %}
+        <a href="{{ path('app_recettes_new') }}">Poster une recette</a>
+    {% endif %}
 {% endblock %}
