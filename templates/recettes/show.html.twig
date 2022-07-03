@@ -27,6 +27,10 @@
                 <th>Content</th>
                 <td>{{ recette.content }}</td>
             </tr>
+            <tr>
+                <th>Image</th>
+                <td><img src="{{ asset('image/'~recette.image) }}" alt=""></td>
+            </tr>
         </tbody>
     </table>
 

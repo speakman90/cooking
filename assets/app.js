@@ -9,6 +9,7 @@
 import './styles/app.less';
 import './styles/main.less';
 import './styles/from-other.less';
+import './styles/recette.less';
 import './styles/reset.less';
 
 // start the Stimulus application
