@@ -2,13 +2,14 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Entity\Recettes;
 use App\Form\RecettesType;
 use App\Repository\RecettesRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/recettes')]
 class RecettesController extends AbstractController
@@ -21,14 +22,16 @@ class RecettesController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_recettes_new', methods: ['GET', 'POST'])]
+    #[Route('/profile/new', name: 'app_recettes_new', methods: ['GET', 'POST'])]
     public function new(Request $request, RecettesRepository $recettesRepository): Response
     {
         $recette = new Recettes();
+        $recette->setUser($this->getUser());
         $form = $this->createForm(RecettesType::class, $recette);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             $recettesRepository->add($recette, true);
 
             return $this->redirectToRoute('app_recettes_index', [], Response::HTTP_SEE_OTHER);
@@ -43,8 +46,13 @@ class RecettesController extends AbstractController
     #[Route('/{id}', name: 'app_recettes_show', methods: ['GET'])]
     public function show(Recettes $recette): Response
     {
+
+        $user = $recette->getUser();
+
         return $this->render('recettes/show.html.twig', [
             'recette' => $recette,
+            'user' => $user,
+
         ]);
     }
 
