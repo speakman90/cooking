@@ -4,16 +4,12 @@ namespace App\Form;
 
 use App\Entity\User;
 use App\Entity\Recettes;
-use App\Repository\UserRepository;
-use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\FormType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\HttpFoundation\File\File;
 
 class RecettesType extends AbstractType
 {
@@ -25,6 +21,10 @@ class RecettesType extends AbstractType
             ->add('title')
             ->add('slug')
             ->add('ingredient')
+            ->add('image', FileType::class, [
+            'allow_file_upload' => ['multipart/form-data'],
+            'data_class' => null
+            ])
             ->add('content')
             ->add('user', EntityType::class, [
                 'label' => ' ',

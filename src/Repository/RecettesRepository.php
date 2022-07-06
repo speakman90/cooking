@@ -57,10 +57,10 @@ class RecettesRepository extends ServiceEntityRepository
 //    public function findOneBySomeField($value): ?Recettes
 //    {
 //        return $this->createQueryBuilder('r')
-//            ->andWhere('r.exampleField = :val')
-//            ->setParameter('val', $value)
+//            ->Where('IDENTITY(r.user_id) = :user_id')
+//            ->setParameter('user_id', $value)
 //            ->getQuery()
-//            ->getOneOrNullResult()
+//            ->getResult()
 //        ;
 //    }
 }

@@ -4,4 +4,17 @@
 
 {% block body %}
         <a href="{{ path('app_recettes_new') }}">Poster une recette</a>
+
+        {% for recette in recettes %}
+
+            <div class="rct-container">
+                <div class="rct-main">
+                    <h2>{{ recette.title }}</h2>
+                    <img src="{{ asset('image/'~recette.image) }}" alt="{{ recette.title }}">
+                    <a href="{{ path('app_recettes_show', {'id': recette.id}) }}">En savoir plus</a>
+                </div>
+            </div>
+
+        {% endfor %}
+
 {% endblock %}

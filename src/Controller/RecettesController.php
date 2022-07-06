@@ -9,6 +9,8 @@ use App\Repository\RecettesRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/recettes')]
@@ -23,14 +25,23 @@ class RecettesController extends AbstractController
     }
 
     #[Route('/profile/new', name: 'app_recettes_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, RecettesRepository $recettesRepository): Response
+    public function new(Request $request, RecettesRepository $recettesRepository, SluggerInterface $slugger): Response
     {
         $recette = new Recettes();
         $recette->setUser($this->getUser());
         $form = $this->createForm(RecettesType::class, $recette);
         $form->handleRequest($request);
 
+        
+
         if ($form->isSubmitted() && $form->isValid()) {
+            
+            $imgFile = $form->get('image')->getData();
+            $originalFile = pathinfo($imgFile->getClientOriginalName(), PATHINFO_FILENAME);
+            $safeFilename = $slugger->slug($originalFile);
+            $newFilename = $safeFilename . '-' . uniqid() . '.' . $imgFile->guessExtension();
+            $imgFile->move($this->getParameter('images_directory'), $newFilename);
+            $recette->setImage($newFilename);
 
             $recettesRepository->add($recette, true);
 
@@ -56,7 +67,7 @@ class RecettesController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_recettes_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/profile/edit', name: 'app_recettes_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Recettes $recette, RecettesRepository $recettesRepository): Response
     {
         $form = $this->createForm(RecettesType::class, $recette);
