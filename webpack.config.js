@@ -22,6 +22,7 @@ Encore
      */
     .addEntry('app', './assets/app.js')
     .addStyleEntry('all', './assets/styles/app.less')
+    .addStyleEntry('all_main', './assets/styles/app_main.less')
     .addStyleEntry('main', './assets/styles/main.less')
     .addStyleEntry('other', './assets/styles/from-other.less')
     .addStyleEntry('recette', './assets/styles/recette.less')

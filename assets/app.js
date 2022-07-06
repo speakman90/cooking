@@ -7,6 +7,7 @@
 
 // any CSS you import will output into a single css file (app.css in this case)
 import './styles/app.less';
+import './styles/app_main.less';
 import './styles/main.less';
 import './styles/from-other.less';
 import './styles/recette.less';

@@ -73,6 +73,8 @@ class RecettesController extends AbstractController
         $form = $this->createForm(RecettesType::class, $recette);
         $form->handleRequest($request);
 
+        $user = $recette->getUser();
+
         if ($form->isSubmitted() && $form->isValid()) {
             $recettesRepository->add($recette, true);
 
@@ -82,6 +84,7 @@ class RecettesController extends AbstractController
         return $this->renderForm('recettes/edit.html.twig', [
             'recette' => $recette,
             'form' => $form,
+            'user' => $user,
         ]);
     }
 

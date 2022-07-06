@@ -3,11 +3,23 @@
 {% block title %}Edit Recettes{% endblock %}
 
 {% block body %}
-    <h1>Edit Recettes</h1>
 
-    {{ include('recettes/_form.html.twig', {'button_label': 'Update'}) }}
+    {% if app.user %}
+        {% if app.user.id == user.id %}
+            <h1>Edit Recettes</h1>
 
-    <a href="{{ path('app_recettes_index') }}">back to list</a>
+            {{ include('recettes/_form.html.twig', {'button_label': 'Update'}) }}
 
-    {{ include('recettes/_delete_form.html.twig') }}
+            <a href="{{ path('app_recettes_index') }}">back to list</a>
+
+            {{ include('recettes/_delete_form.html.twig') }}
+            <a href="{{ path('app_recettes_edit', {'id': recette.id}) }}">edit</a>
+        {% else %}
+
+            <h1>Vous ne pouvez pas modifié cette recette</h1>
+            <a href="{{ path('app_recettes_index') }}">back to list</a>
+        {% endif %}
+    {% endif %}
+
+
 {% endblock %}
