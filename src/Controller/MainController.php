@@ -16,13 +16,18 @@ class MainController extends AbstractController
     #[Route('/', name: 'app_main')]
     public function index(RecettesRepository $recettesRepository): Response
     {
-        $idRct = rand(1,2);
-        
-
+        $rct = $recettesRepository->findAll();
+        shuffle($rct);
 
         return $this->render('main/index.html.twig', [
             'controller_name' => 'MainController',
-            'recette'=> $recettesRepository->findOneById(['id' => $idRct])
+            'recette'=> $rct[0]
         ]);
+    }
+
+    #[Route('/cookie-other', name: 'app_infos')]
+    public function infos(): Response
+    {
+        return $this->render('main/info.html.twig', []);
     }
 }

@@ -13,7 +13,7 @@
 
                 <p>{{ recette.content }}</p>
 
-                <h4>Auteur : {{ user.username }}</h4>
+                <h4>Auteur : {{ user.username }} <img src="{{ asset('avatar/'~user.avatar) }}" alt="{{ user.username }}"></h4>
 
     <a href="{{ path('app_recettes_index') }}">Toutes les recettes</a>
 

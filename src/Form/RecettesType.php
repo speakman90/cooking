@@ -11,6 +11,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class RecettesType extends AbstractType
 {
@@ -21,12 +22,12 @@ class RecettesType extends AbstractType
         $builder
             ->add('title')
             ->add('slug')
-            ->add('ingredient', TextType::class)
+            ->add('ingredient', TextareaType::class)
             ->add('image', FileType::class, [
             'allow_file_upload' => ['multipart/form-data'],
             'data_class' => null
             ])
-            ->add('content', TextType::class)
+            ->add('content', TextareaType::class)
             ->add('user', EntityType::class, [
                 'label' => ' ',
                 'class'=>User::class,

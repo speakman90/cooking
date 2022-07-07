@@ -7,7 +7,6 @@ use App\Entity\Recettes;
 use App\Form\RecettesType;
 use App\Entity\RecetteLike;
 use App\Repository\RecettesRepository;
-use Doctrine\Persistence\ObjectManager;
 use App\Repository\RecetteLikeRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
