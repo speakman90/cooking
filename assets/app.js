@@ -13,5 +13,7 @@ import './styles/from-other.less';
 import './styles/recette.less';
 import './styles/reset.less';
 
+import './ajax.js';
+
 // start the Stimulus application
 import './bootstrap';

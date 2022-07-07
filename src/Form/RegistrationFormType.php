@@ -39,7 +39,8 @@ class RegistrationFormType extends AbstractType
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
-                'attr' => ['autocomplete' => 'new-password'],
+                'attr' => ['autocomplete' => 'new-password',
+                            'id'=> 'markItUp'],
                 'constraints' => [
                     new NotBlank([
                         'message' => "Entre un mot de passe",

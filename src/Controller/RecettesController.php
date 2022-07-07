@@ -5,7 +5,10 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Entity\Recettes;
 use App\Form\RecettesType;
+use App\Entity\RecetteLike;
 use App\Repository\RecettesRepository;
+use Doctrine\Persistence\ObjectManager;
+use App\Repository\RecetteLikeRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -96,5 +99,43 @@ class RecettesController extends AbstractController
         }
 
         return $this->redirectToRoute('app_recettes_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/{id}/like', name: 'app_recettes_like')]
+    public function like(Recettes $recettes, RecetteLikeRepository $recetteLikeRepository): Response 
+    {
+        $user = $this->getUser();
+
+        if(!$user)
+        {
+            return $this->json([
+                'code' => 403,
+                'message' => 'Connexion obligatoire'
+            ], 403);
+        }
+
+        if($recettes->isLikedByUser($user))
+        {
+            $like = $recetteLikeRepository->findOneBy([
+                'recette' => $recettes,
+                'user' => $user
+            ]);
+
+            $recetteLikeRepository->remove($like, true);
+
+            return $this->json([
+                'code' => 200,
+                'message' => 'Like supprimée',
+                'likes' => $recetteLikeRepository->count(['recette'=>$recettes])
+            ], 200);
+        }
+
+        $like = new RecetteLike();
+        $like->setRecette($recettes)
+             ->setUser($user);
+
+        $recetteLikeRepository->add($like, true);
+
+        return $this->json(['code'=> 200, 'message'=> 'Like ok', 'likes' => $recetteLikeRepository->count(['recette'=>$recettes])], 200);        
     }
 }
