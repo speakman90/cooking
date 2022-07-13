@@ -22,12 +22,12 @@ Encore
      */
     .addEntry('app', './assets/app.js')
     .addEntry('ajax', './assets/ajax.js')
-    .addStyleEntry('config_main', './assets/styles/app.less')
-    .addStyleEntry('config_main_main', './assets/styles/app_main.less')
-    .addStyleEntry('main', './assets/styles/main.less')
-    .addStyleEntry('other', './assets/styles/from-other.less')
-    .addStyleEntry('recette', './assets/styles/recette.less')
-    .addStyleEntry('reset', './assets/styles/reset.less')
+    .addEntry('config_main', './assets/styles/app.less')
+    .addEntry('config_main_main', './assets/styles/app_main.less')
+    .addEntry('main', './assets/styles/main.less')
+    .addEntry('other', './assets/styles/from-other.less')
+    .addEntry('recette', './assets/styles/recette.less')
+    .addEntry('reset', './assets/styles/reset.less')
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./assets/controllers.json')

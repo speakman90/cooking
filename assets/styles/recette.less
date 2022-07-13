@@ -11,26 +11,61 @@
         position: relative;
         border: 1px solid grey;
         border-radius: 15px;
+        .rct-box {
+                display: block;
+                background: rgba(0, 0, 0, 0.416);
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                border-radius: 10px;
+                opacity: 0;
+                transition: all 0.3s ease-in-out;
+                &:hover {
+                    opacity: 1;
+                }
+            }
         h2 {
             margin: 0;
-            position: relative;
+            position: absolute;
             top: 1em;
+            left: 0.5em;
             color: white;
         }
         img {
             width: 100%;
             box-sizing: border-box;
+            border-radius: 10px;
         }
-        a {
+        .rct-button {
             bottom: 1em;
-            position: relative;
+            position: absolute;
             background: white;
             font-weight: bold;
             text-decoration: none;
             color: black;
+            border-radius: 10px;
+            padding: 0.2em;
+            left: 0.5em;
+            transition: all 0.1s ease-in-out;
+            &:hover {
+                color: #ee4d2a;
+            }
+        }
+        .js-like {
+            position: absolute;
+            font-weight: bold;
+            text-decoration: none;
+            bottom: 1em;
+            right: 1em;
+            color: black;
+            background: white;
+            border-radius: 10px;
+            padding: 0.1em;
         }
     }
 }
+
+
 
 .form-recette-create {
     display: flex;
