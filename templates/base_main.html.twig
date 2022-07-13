@@ -2,16 +2,19 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <meta name="apple-mobile-web-app-capable" content="yes">
+	    <meta name="mobile-web-app-capable" content="yes">
         <title>Recettes AMIGO | {% block title %}{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>👨🏻‍🍳</text></svg>">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
         {% block stylesheets %}
-            {{ encore_entry_link_tags('all_main') }}
-            {{ encore_entry_link_tags('main') }}
-            {{ encore_entry_link_tags('other') }}
             {{ encore_entry_link_tags('reset') }}
+            {{ encore_entry_link_tags('other') }}
+            {{ encore_entry_link_tags('config_main_main') }}
+            {{ encore_entry_link_tags('main') }}
             {{ encore_entry_link_tags('recette') }}
         {% endblock %}
 

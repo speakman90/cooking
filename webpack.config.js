@@ -22,8 +22,8 @@ Encore
      */
     .addEntry('app', './assets/app.js')
     .addEntry('ajax', './assets/ajax.js')
-    .addStyleEntry('all', './assets/styles/app.less')
-    .addStyleEntry('all_main', './assets/styles/app_main.less')
+    .addStyleEntry('config_main', './assets/styles/app.less')
+    .addStyleEntry('config_main_main', './assets/styles/app_main.less')
     .addStyleEntry('main', './assets/styles/main.less')
     .addStyleEntry('other', './assets/styles/from-other.less')
     .addStyleEntry('recette', './assets/styles/recette.less')
