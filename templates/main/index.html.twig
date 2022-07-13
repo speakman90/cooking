@@ -16,20 +16,20 @@
     <div class="main-rct-container">
         <h2>Une recette au hasard</h2>
                     {% if recette %}
+                        <h2>{{ recette.title }}</h2>
+                        <img src="{{ asset('image/'~recette.image) }}" alt="{{ recette.title }}">
+                        <a href="{{ path('app_recettes_show', {'id': recette.id}) }}">En savoir plus</a>
+                        <a href="{{ path('app_recettes_like', {'id': recette.id}) }}" class="js-like">
+                            <span class="js-likes"> {{recette.likes | length}} </span>
+                                {% if app.user and recette.isLikedByUser(app.user) %}
+                                        <i class="fa-solid fa-heart"></i>
+                                {% else %}
+                                        <i class="fa-regular fa-heart"></i>
+                                {% endif %}
+                        </a>
+                    {% else %}
                         <h2>Il n'y à pas de recette disponible</h2>
-                    {% else %}
-                    <h2>{{ recette.title }}</h2>
-                    <img src="{{ asset('image/'~recette.image) }}" alt="{{ recette.title }}">
-                    <a href="{{ path('app_recettes_show', {'id': recette.id}) }}">En savoir plus</a>
-                    <a href="{{ path('app_recettes_like', {'id': recette.id}) }}" class="js-like">
-                        <span class="js-likes"> {{recette.likes | length}} </span>
-                    {% if app.user and recette.isLikedByUser(app.user) %}
-                            <i class="fa-solid fa-heart"></i>
-                    {% else %}
-                            <i class="fa-regular fa-heart"></i>
                     {% endif %}
-                    {% endif %}
-                    </a>
                 </div>
             </div>
 

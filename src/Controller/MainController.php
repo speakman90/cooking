@@ -22,10 +22,10 @@ class MainController extends AbstractController
         if (!isset($rct))
         {
             $recR = $rct[0];
+
         }
-        else 
-        {
-            $recR = 'no';
+        else {
+            $recR = null;
         }
 
         return $this->render('main/index.html.twig', [

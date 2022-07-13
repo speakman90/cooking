@@ -1,20 +1,22 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_main.html.twig' %}
 
 {% block title %}Recettes{% endblock %}
 
 {% block body %}
-    <h1>{{ recette.title }}</h1>
-
-                <h2>Ingredients</h2>
-                <p>{{ recette.ingredient }}</p>
-                <h3>La préparation</h3>
+            <div class="rct-container">
+                <div class="rct-show">
+                    <h1>{{ recette.title }}</h1>
+                    <h2>Ingredients</h2>
+                    <p>{{ recette.ingredient }}</p>
+                    <h3>La préparation</h3>
+                    <img src="{{ asset('image/'~recette.image) }}" alt="" class="rct-img">
+                    <p>{{ recette.content }}</p>
+                    <h4>Auteur : {{ user.username }}<img src="{{ asset('avatar/'~user.avatar) }}" alt="{{ user.username }}" class="avatar-img"></h4>
+                    <div class="rct-container-button">
+                        <a href="{{ path('app_recettes_index') }}">Toutes les recettes</a>
+                    </div>
+                    
+                </div>
+            </div>
                 
-                <img src="{{ asset('image/'~recette.image) }}" alt="">
-
-                <p>{{ recette.content }}</p>
-
-                <h4>Auteur : {{ user.username }} <img src="{{ asset('avatar/'~user.avatar) }}" alt="{{ user.username }}"></h4>
-
-    <a href="{{ path('app_recettes_index') }}">Toutes les recettes</a>
-
 {% endblock %}
