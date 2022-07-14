@@ -16,9 +16,31 @@
     justify-content: center;
     text-align: center;
     margin: 1em 0.5em;
+    position: relative;
     .main-rct-container {
-        border: 2px solid grey;
         border-radius: 20px;
         padding: 0.5em;
+        width: 90%;
+        img {
+           border: 2px solid grey;
+           width: 100%; 
+           border-radius: 20px;
+        }
+        #rct-title {
+            text-transform: uppercase;
+            position: absolute;
+            text-align: center;
+            color: white;
+            width: 86%;
+            margin: 0.5em 0 0 0;
+        }
+        .js-like {
+            bottom: 1.5em;
+            right: 2.5em;
+        }
+        .rct-button {
+            bottom: 1.5em;
+            left: 2.5em;
+        }
     }
 }

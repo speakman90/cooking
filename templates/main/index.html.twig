@@ -7,7 +7,6 @@
 <div class="main-about">
     <div class="main-container">
         <h1>Bienvenue sur les recettes AMIGO 👨🏻‍🍳</h1>
-        <h2>Site créé par la Légion 42</h2>
         <h3>N'hésitez pas à vous inscrire et à proposé vos recettes</h3>
     </div>
 </div>
@@ -15,10 +14,12 @@
 <div class="main-rct-top">
     <div class="main-rct-container">
         <h2>Une recette au hasard</h2>
-                    {% if recette %}
-                        <h2>{{ recette.title }}</h2>
+                    {% if recette == null %}
+                        <h2>Il n'y à pas de recette disponible</h2>
+                    {% else %}
+                        <h2 id="rct-title">{{ recette.title }}</h2>
                         <img src="{{ asset('image/'~recette.image) }}" alt="{{ recette.title }}">
-                        <a href="{{ path('app_recettes_show', {'id': recette.id}) }}">En savoir plus</a>
+                        <a class="rct-button" href="{{ path('app_recettes_show', {'id': recette.id}) }}">En savoir plus</a>
                         <a href="{{ path('app_recettes_like', {'id': recette.id}) }}" class="js-like">
                             <span class="js-likes"> {{recette.likes | length}} </span>
                                 {% if app.user and recette.isLikedByUser(app.user) %}
@@ -27,8 +28,6 @@
                                         <i class="fa-regular fa-heart"></i>
                                 {% endif %}
                         </a>
-                    {% else %}
-                        <h2>Il n'y à pas de recette disponible</h2>
                     {% endif %}
                 </div>
             </div>

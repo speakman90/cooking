@@ -19,14 +19,14 @@ class MainController extends AbstractController
         $rct = $recettesRepository->findAll();
         shuffle($rct);
 
-        if (!isset($rct))
+        if (isset($rct))
         {
             $recR = $rct[0];
-
         }
         else {
             $recR = null;
         }
+
 
         return $this->render('main/index.html.twig', [
             'controller_name' => 'MainController',

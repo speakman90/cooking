@@ -3,17 +3,17 @@
 {% block title %}Le frigo{% endblock %}
 
 {% block body %}
-        <a href="{{ path('app_recettes_new') }}">Poster une recette</a>
+        <a href="{{ path('app_recettes_new') }}" class="btn">Poster une recette</a>
 
         {% for recette in recettes %}
 
             <div class="rct-container">
                 <div class="rct-main">
                     <h2>{{ recette.title }}</h2>
-                    <img src="{{ asset('image/'~recette.image) }}" alt="{{ recette.title }}">
-                    <a href="{{ path('app_recettes_show', {'id': recette.id}) }}">En savoir plus</a>
-                    <a href="{{ path('app_recettes_edit', {'id': recette.id}) }}">Modifier</a>
-                    {{ include('recettes/_delete_form.html.twig') }}
+                    <img src="{{ asset('image/'~recette.image) }}" alt="{{ recette.title }}" class="rct-img">
+                    <div class="rct-account">
+                    {{ include('recettes/_delete_form.html.twig') }} 
+                    </div>
                 </div>
             </div>
 

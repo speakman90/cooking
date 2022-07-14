@@ -1,4 +1,6 @@
 <form method="post" action="{{ path('app_recettes_delete', {'id': recette.id}) }}" onsubmit="return confirm('Vous êtes sur de vouloir supprimé cette recette ?');">
     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ recette.id) }}">
-    <button class="btn">Effacer</button>
+    <a href="{{ path('app_recettes_show', {'id': recette.id}) }}" class="rct-button">En savoir plus</a>
+    <a href="{{ path('app_recettes_edit', {'id': recette.id}) }}" class="rct-button">Modifier</a>
+    <button class="rct-button">Effacer</button>
 </form>

@@ -38,92 +38,110 @@
         box-sizing: border-box;
         border-radius: 10px;
     }
-    .rct-button {
-        bottom: 1em;
-        position: absolute;
-        background: white;
-        font-weight: bold;
-        text-decoration: none;
-        color: black;
-        border-radius: 10px;
-        padding: 0.2em;
-        left: 0.5em;
-        transition: all 0.1s ease-in-out;
-        &:hover {
-            color: #ee4d2a;
-        }
-    }
-    .js-like {
-        position: absolute;
-        font-weight: bold;
-        text-decoration: none;
-        bottom: 1em;
-        right: 1em;
-        color: black;
-        background: white;
-        border-radius: 10px;
-        padding: 0.1em;
+}
+
+.rct-button {
+    bottom: 1em;
+    position: absolute;
+    background: white;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+    border-radius: 10px;
+    padding: 0.2em;
+    left: 0.5em;
+    transition: all 0.1s ease-in-out;
+    &:hover {
+        color: #ee4d2a;
     }
 }
 
-    .rct-show {
-        width: 90%;
+.js-like {
+    position: absolute;
+    font-weight: bold;
+    text-decoration: none;
+    bottom: 1em;
+    right: 1em;
+    color: black;
+    background: white;
+    border-radius: 10px;
+    padding: 0.1em;
+}
+
+.rct-show {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border-radius: 15px;
+    h1 {
+        text-transform: uppercase;
+    }
+    h2, h4 {
+        margin: 0;
+    }
+    h4 {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .rct-container-button {
         display: flex;
         flex-direction: column;
-        position: relative;
-        border-radius: 15px;
-        h1 {
-            text-transform: uppercase;
-        }
-        h2, h4 {
-            margin: 0;
-        }
-        h4 {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .rct-container-button {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 8em;
-            a {
-                background: #ee4d2a;
-                width: 12em;
-                text-align: center;
-                padding: 0.5em;
-                border-radius: 20px;
-                text-decoration: none;
+        align-items: center;
+        justify-content: center;
+        height: 8em;
+        a {
+            background: #ee4d2a;
+            width: 12em;
+            text-align: center;
+            padding: 0.5em;
+            border-radius: 20px;
+            text-decoration: none;
+            color: white;
+            border: 1px solid grey;
+            transition: all 0.3s ease-in-out;
+            &:hover {
                 color: white;
-                border: 1px solid grey;
+                background-color: #ee4d2a;
                 transition: all 0.3s ease-in-out;
-                &:hover {
-                    color: white;
-                    background-color: #ee4d2a;
-                    transition: all 0.3s ease-in-out;
-                    box-shadow: inset -1px 1px 1px black;
-                }
+                box-shadow: inset -1px 1px 1px black;
             }
         }
-        .rct-img{
-            border-radius: 20px;
-        }
-        .avatar-img {
-            border-radius: 50%;
-            border: 5px solid #ee4d2a;
-            width: 5em;
+    }
+    .rct-img{
+        border-radius: 20px;
+    }
+    .avatar-img {
+        border-radius: 50%;
+        border: 5px solid #ee4d2a;
+        width: 5em;
+    }
+}
+
+.rct-account {
+    position: absolute;
+    bottom: 1em;
+    display: flex;
+    form {
+        display: flex;
+        width: 89.5vw;
+        align-items: center;
+        justify-content: space-around;
+        .rct-button {
+            position: inherit;
+            border: none;
         }
     }
+}
 
 .form-recette-create {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 90%;
     background: #ee4d2a;
     padding: 0.5em;
-    margin: 10em auto;
+    margin: 5em auto;
     align-items: center;
     color: white;
     border-radius: 20px;
@@ -138,6 +156,7 @@
     }
     button {
         background: white;
+        color: black;
         border-radius: 20px;
         border: 1px solid grey;
     }
