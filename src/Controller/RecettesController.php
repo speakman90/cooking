@@ -34,8 +34,6 @@ class RecettesController extends AbstractController
         $form = $this->createForm(RecettesType::class, $recette);
         $form->handleRequest($request);
 
-        
-
         if ($form->isSubmitted() && $form->isValid()) {
             
             $imgFile = $form->get('image')->getData();

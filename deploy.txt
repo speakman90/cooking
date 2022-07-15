@@ -1,1 +1,1 @@
-rsync -av ./ pierrog@ssh.cluster031.hosting.ovh.net:~/amigos --include=public/build --include=public/.htaccess --include=vendor --exclude-from=.gitignore --exclude=".*" --exclude="deploy.txt"
+rsync -av ./ pierrog@ssh.cluster031.hosting.ovh.net:~/amigos --include=public/build --include=public/.htaccess --include=vendor --exclude-from=.gitignore --exclude=".*" --exclude="deploy.txt" --exclude="var/*" --exclude="config/services.yaml"

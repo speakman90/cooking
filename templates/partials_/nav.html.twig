@@ -14,7 +14,7 @@
             {% endif %}
             {% if app.user %}
             <li>
-                <a href="/profile/account">Frigo</a>
+                <a href="{{ path('app_account_index', {'id': app.user.id}) }}">Frigo</a>
             </li>
             <li>
                 <a href="/logout">Deconnexion</a>

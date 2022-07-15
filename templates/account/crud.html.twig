@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Le frigo{% endblock %}
+
+{% block body %}
+        <a href="{{ path('app_recettes_new') }}" class="btn">Poster une recette</a>
+        <a href="{{ path('app_account_account-crud', {'id': user.id}) }}" class="btn">Modifier infos perso</a>
+
+        {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <button class="btn">{{ button_label|default('Modifié mes informations') }}</button>
+        {{ form_end(form) }}
+        
+        {{ form_start(formMdp) }}
+                {{ form_widget(formMdp) }}
+                <button class="btn">{{ button_label|default('Modifié mes informations') }}</button>
+        {{ form_end(formMdp) }}
+
+{% endblock %}
