@@ -3,17 +3,26 @@
 {% block title %}Le frigo{% endblock %}
 
 {% block body %}
-        <a href="{{ path('app_recettes_new') }}" class="btn">Poster une recette</a>
-        <a href="{{ path('app_account_account-crud', {'id': user.id}) }}" class="btn">Modifier infos perso</a>
-
-        {{ form_start(form) }}
+        <nav class='nav-navbar'>
+                <ul>
+                        <li>
+                                <a href="{{ path('app_recettes_new') }}" class="btn">Poster une recette</a>
+                        </li>
+                        <li>
+                                <a href="{{ path('app_account_account-crud', {'id': user.id}) }}" class="btn">Modifier infos perso</a>
+                        </li>
+                </ul>
+        </nav>
+        
+        {{ form_start(form,  {'attr' : { 'class': 'form-recette-create' }}) }}
                 {{ form_widget(form) }}
-                <button class="btn">{{ button_label|default('Modifié mes informations') }}</button>
+                <button class="btn">{{ button_label|default('Modifier mes informations') }}</button>
         {{ form_end(form) }}
         
-        {{ form_start(formMdp) }}
-                {{ form_widget(formMdp) }}
-                <button class="btn">{{ button_label|default('Modifié mes informations') }}</button>
+        {{ form_start(formMdp, {'attr' : { 'class': 'form-recette-create' }}) }}
+                {{ form_row(formMdp.plainPassword.first) }}
+                {{ form_row(formMdp.plainPassword.second) }}
+                <button class="btn">{{ button_label|default('Modifier mes informations') }}</button>
         {{ form_end(formMdp) }}
 
 {% endblock %}

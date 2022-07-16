@@ -3,8 +3,16 @@
 {% block title %}Le frigo{% endblock %}
 
 {% block body %}
-        <a href="{{ path('app_recettes_new') }}" class="btn">Poster une recette</a>
-        <a href="{{ path('app_account_account-crud',{'id': app.user.id}) }}" class="btn">Modifier infos perso</a>
+    <nav class='nav-navbar'>
+         <ul>
+            <li>
+                    <a href="{{ path('app_recettes_new') }}" class="btn">Poster une recette</a>
+            </li>
+            <li>
+                    <a href="{{ path('app_account_account-crud', {'id': app.user.id}) }}" class="btn">Modifier infos perso</a>
+            </li>
+        </ul>
+    </nav>
 
         {% for recette in recettes %}
 
