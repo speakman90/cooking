@@ -11,6 +11,7 @@ import './styles/app_main.less';
 import './styles/main.less';
 import './styles/from-other.less';
 import './styles/recette.less';
+import './styles/screen.less';
 import './styles/reset.less';
 
 import './ajax.js';

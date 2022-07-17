@@ -1,3 +1,4 @@
+@media only screen and (max-width: 500px) {
 .rct-container {
     width: 100vw;
     margin: 1em 0;
@@ -160,4 +161,195 @@
         border-radius: 20px;
         border: 1px solid grey;
     }
+}
+}
+
+@media all and (min-width: 500px) {
+    .rct-container {
+            width: 99vw;
+            margin: 1em 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    
+        .rct-main {
+            width: 30%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            border: 1px solid grey;
+            border-radius: 15px;
+    
+            .rct-box {
+                display: block;
+                background: rgba(0, 0, 0, 0.416);
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                border-radius: 10px;
+                opacity: 0;
+                transition: all 0.3s ease-in-out;
+                z-index: 2;
+                &:hover {
+                    opacity: 1;
+                }
+            }
+    
+            h2 {
+                margin: 1em;
+                position: absolute;
+                color: white;
+                z-index: 1;
+            }
+    
+            img {
+                width: 100%;
+                height: 100%;
+                position: relative;
+                box-sizing: border-box;
+                border-radius: 10px
+            }
+        }
+    
+        .rct-button {
+            bottom: 5%;
+            position: absolute;
+            background: white;
+            font-weight: bold;
+            text-decoration: none;
+            color: black;
+            border-radius: 10px;
+            padding: 0.2em;
+            left: 0.5em;
+            transition: all 0.1s ease-in-out;
+    
+            &:hover {
+                color: #ee4d2a;
+            }
+        }
+    
+        .js-like {
+            position: absolute;
+            font-weight: bold;
+            text-decoration: none;
+            bottom: 5%;
+            right: 1em;
+            color: black;
+            background: white;
+            border-radius: 10px;
+            padding: 0.1em;
+            z-index: 3;
+        }
+    
+        .rct-show {
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            border-radius: 15px;
+    
+            h1 {
+                text-transform: uppercase;
+            }
+    
+            h2,
+            h4 {
+                margin: 0;
+            }
+    
+            h4 {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+    
+            .rct-container-button {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: 8em;
+    
+                a {
+                    background: #ee4d2a;
+                    width: 12em;
+                    text-align: center;
+                    padding: 0.5em;
+                    border-radius: 20px;
+                    text-decoration: none;
+                    color: white;
+                    border: 1px solid grey;
+                    transition: all 0.3s ease-in-out;
+    
+                    &:hover {
+                        color: white;
+                        background-color: #ee4d2a;
+                        transition: all 0.3s ease-in-out;
+                        box-shadow: inset -1px 1px 1px black;
+                    }
+                }
+            }
+    
+            .rct-img {
+                border-radius: 20px;
+                width: 30%;
+                margin: auto;
+            }
+    
+            .avatar-img {
+                border-radius: 50%;
+                border: 5px solid #ee4d2a;
+                width: 5em;
+            }
+        }
+    
+        .rct-account {
+            position: absolute;
+            bottom: 1em;
+            display: flex;
+    
+            form {
+                display: flex;
+                width: 30vw;
+                align-items: center;
+                justify-content: space-around;
+    
+                .rct-button {
+                    position: inherit;
+                    border: none;
+                }
+            }
+        }
+    
+        .form-recette-create {
+            display: flex;
+            flex-direction: column;
+            width: 90%;
+            background: #ee4d2a;
+            padding: 0.5em;
+            margin: 5em auto;
+            align-items: center;
+            color: white;
+            border-radius: 20px;
+    
+            #recettes {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+    
+                input,
+                label {
+                    margin: 0.5em 0;
+                    font-weight: bold;
+                }
+            }
+    
+            button {
+                background: white;
+                color: black;
+                border-radius: 20px;
+                border: 1px solid grey;
+            }
+        }
 }

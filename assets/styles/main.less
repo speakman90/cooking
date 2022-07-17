@@ -1,46 +1,112 @@
-.main-about {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    margin: 0 0.5em;
-    .main-container {
-        background-color: #ee4d2a;
-        border-radius: 20px;
-        color: white;
-        padding: 0.5em;
+@media only screen and (max-width: 500px) {
+
+    .main-about {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        margin: 0 0.5em;
+        .main-container {
+            background-color: #ee4d2a;
+            border-radius: 20px;
+            color: white;
+            padding: 0.5em;
+        }
+    }
+
+    .main-rct-top {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        margin: 1em 0.5em;
+        position: relative;
+        .main-rct-container {
+            border-radius: 20px;
+            padding: 0.5em;
+            width: 90%;
+            img {
+            border: 2px solid grey;
+            width: 100%; 
+            border-radius: 20px;
+            }
+            #rct-title {
+                text-transform: uppercase;
+                position: absolute;
+                text-align: center;
+                color: white;
+                width: 86%;
+                margin: 0.5em 0 0 0;
+            }
+            .js-like {
+                bottom: 1.5em;
+                right: 2.5em;
+            }
+            .rct-button {
+                bottom: 1.5em;
+                left: 2.5em;
+            }
+        }
     }
 }
 
-.main-rct-top {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    margin: 1em 0.5em;
-    position: relative;
-    .main-rct-container {
-        border-radius: 20px;
-        padding: 0.5em;
-        width: 90%;
-        img {
-           border: 2px solid grey;
-           width: 100%; 
-           border-radius: 20px;
-        }
-        #rct-title {
-            text-transform: uppercase;
-            position: absolute;
-            text-align: center;
+@media all and (min-width: 500px) {
+.main-about {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        margin: 0 0.5em;
+
+        .main-container {
+            background-color: #ee4d2a;
+            border-radius: 20px;
             color: white;
-            width: 86%;
-            margin: 0.5em 0 0 0;
+            padding: 0.5em;
         }
-        .js-like {
-            bottom: 1.5em;
-            right: 2.5em;
-        }
-        .rct-button {
-            bottom: 1.5em;
-            left: 2.5em;
+    }
+
+    .main-rct-top {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+        margin: 1em 0em;
+        position: absolute;
+
+        .main-rct-container {
+            display: flex;
+            border-radius: 20px;
+            padding: 0.5em;
+            width: 80%;
+            height: 50vh;
+            flex-direction: column;
+            align-items: center;
+            img {
+                border: 2px solid grey;
+                width: 30%;
+                border-radius: 20px;
+            }
+
+            #rct-title {
+                text-transform: uppercase;
+                position: relative;
+                text-align: center;
+                color: white;
+                top: 2em;
+                margin: 0.5em 0 0 0;
+            }
+
+            .js-like {
+                position: relative;
+                left: 12%;
+                bottom: 4.5em;
+                right: inherit;
+            }
+
+            .rct-button {
+                position: relative;
+                bottom: 3em;
+                right: 10%;
+                left: inherit;
+            }
         }
     }
 }

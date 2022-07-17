@@ -27,6 +27,7 @@ Encore
     .addEntry('main', './assets/styles/main.less')
     .addEntry('other', './assets/styles/from-other.less')
     .addEntry('recette', './assets/styles/recette.less')
+    .addEntry('screen', './assets/styles/screen.less')
     .addEntry('reset', './assets/styles/reset.less')
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)

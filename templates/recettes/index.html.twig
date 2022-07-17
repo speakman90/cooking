@@ -14,7 +14,6 @@
                     </div>
                     <h2>{{ recette.title }}</h2>
                     <img src="{{ asset('image/'~recette.image) }}" alt="{{ recette.title }}" class="rct-img">
-                    
                     <a href="{{ path('app_recettes_like', {'id': recette.id}) }}" class="js-like">
                         <span class="js-likes"> {{recette.likes | length}} </span>
                     {% if app.user and recette.isLikedByUser(app.user) %}
